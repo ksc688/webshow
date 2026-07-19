@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<!-- saved from url=(0227)file:///Users/ksc/Library/Application%20Support/Claude-3p/local-agent-mode-sessions/0cc53139-9eda-4c0c-8ffb-9ad180fea643/00000000-0000-4000-8000-000000000001/local_68074a16-ec10-41f1-bcac-9633e4f36635/outputs/agent_project.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=1120, viewport-fit=cover">
+<title>业务团队信息检索 Agent —— 切实助力工作提效</title>
+<style>
+  :root{
+    --navy:#051C2C;        /* 商务黑/深海军蓝 */
+    --ink:#1A2733;         /* 正文深灰黑 */
+    --gray:#5B6770;        /* 次级灰 */
+    --gray-light:#8A949C;  /* 辅助灰 */
+    --blue:#2251FF;        /* 经典亮蓝-高亮 */
+    --blue-deep:#1F3A5F;   /* 深商务蓝 */
+    --teal:#00A9CE;        /* 点缀青 */
+    --line:#E3E7EB;        /* 分隔线 */
+    --bg:#FFFFFF;
+    --bg-soft:#F5F7F9;     /* 浅灰底块 */
+    --bg-navy-soft:#0A2A3F;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    font-size:15px;
+  }
+  .wrap{width:100%;}
+  /* ============ HERO ============ */
+  .hero{
+    background:linear-gradient(135deg,var(--navy) 0%,#0A2E44 60%,#123f5c 100%);
+    color:#fff;
+    padding:38px 5vw 32px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-80px;top:-80px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(34,81,255,0.18) 0%,rgba(34,81,255,0) 70%);
+  }
+  .hero .kicker{
+    font-size:12px;letter-spacing:3px;color:var(--teal);font-weight:700;
+    text-transform:uppercase;margin-bottom:10px;
+  }
+  .hero h1{
+    font-size:34px;font-weight:800;line-height:1.2;letter-spacing:0.5px;
+    max-width:1100px;
+  }
+  .hero h1 .hl{color:#5FD0E8;}
+  .hero .lead{
+    margin-top:14px;max-width:1050px;font-size:15.5px;line-height:1.7;
+    color:#D6DEE5;font-weight:400;
+  }
+  .hero .lead b{color:#fff;font-weight:700;}
+  .hero .lead .accent{color:#5FD0E8;font-weight:700;}
+  /* ============ SECTION LAYOUT ============ */
+  .section{padding:30px 5vw;border-bottom:1px solid var(--line);}
+  .section:nth-of-type(even){background:var(--bg-soft);}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+  .sec-num{
+    flex:0 0 auto;width:38px;height:38px;border-radius:4px;
+    background:var(--navy);color:#fff;font-size:18px;font-weight:800;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .sec-title{font-size:22px;font-weight:800;color:var(--navy);letter-spacing:0.5px;line-height:1.2;}
+  .sec-sub{font-size:13px;color:var(--gray);font-weight:500;margin-top:1px;}
+  /* ============ TYPOGRAPHY HELPERS ============ */
+  p.body{color:var(--ink);margin-bottom:10px;font-size:14.5px;line-height:1.65;}
+  .lead-line{
+    font-size:15px;line-height:1.7;color:var(--ink);
+    border-left:4px solid var(--blue);padding:11px 16px;background:#fff;
+    margin-bottom:16px;border-radius:0 4px 4px 0;
+    box-shadow:0 1px 3px rgba(5,28,44,0.05);
+  }
+  .lead-line b{color:var(--navy);font-weight:800;}
+  .lead-line .accent{color:var(--blue);font-weight:700;}
+  b.key{color:var(--navy);font-weight:800;}
+  .accent{color:var(--blue);font-weight:700;}
+  .emph{background:linear-gradient(transparent 62%,rgba(34,81,255,0.16) 0);font-weight:700;color:var(--navy);}
+  /* ============ CARDS / PAIN POINTS ============ */
+  .grid{display:grid;gap:10px;}
+  .grid-3{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:repeat(2,1fr);}
+  .grid-4{grid-template-columns:repeat(4,1fr);}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:5px;padding:13px 15px;
+    border-top:3px solid var(--blue);
+  }
+  .card.alt{border-top-color:var(--teal);}
+  .card .c-tag{font-size:11px;font-weight:700;letter-spacing:1px;color:var(--gray-light);text-transform:uppercase;}
+  .card h4{font-size:15.5px;font-weight:800;color:var(--navy);margin:3px 0 5px;}
+  .card p{font-size:13.5px;color:var(--gray);line-height:1.6;}
+  .card p b{color:var(--ink);font-weight:700;}
+  /* essence callout */
+  .essence{
+    margin-top:14px;background:var(--navy);color:#fff;border-radius:5px;
+    padding:13px 18px;display:flex;gap:14px;align-items:flex-start;
+  }
+  .essence .lbl{
+    flex:0 0 auto;font-size:12.5px;font-weight:800;letter-spacing:1px;
+    background:var(--blue);padding:4px 11px;border-radius:4px;color:#fff;margin-top:1px;
+  }
+  .essence p{font-size:14.5px;line-height:1.65;color:#E4EAF0;}
+  .essence p b{color:#fff;font-weight:800;}
+  /* ============ TABLE ============ */
+  .tbl-wrap{border:1px solid var(--line);border-radius:6px;overflow:hidden;box-shadow:0 1px 4px rgba(5,28,44,0.05);}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  thead th{
+    background:var(--navy);color:#fff;font-weight:700;text-align:left;
+    padding:9px 14px;font-size:13px;letter-spacing:0.5px;
+  }
+  tbody td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink);line-height:1.55;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:nth-child(even){background:var(--bg-soft);}
+  td.goal{font-weight:800;color:var(--navy);width:22%;}
+  td .metric{color:var(--blue);font-weight:800;}
+  .idx{color:var(--gray-light);font-weight:700;margin-right:6px;}
+  /* ============ NUMBERED / BULLET LISTS ============ */
+  .block{background:#fff;border:1px solid var(--line);border-radius:6px;padding:6px 0;margin-bottom:0;}
+  ul.clean, ol.clean{list-style:none;}
+  .li{
+    display:flex;gap:12px;padding:9px 16px;border-bottom:1px solid var(--line);align-items:center;
+  }
+  .li:last-child{border-bottom:none;}
+  .li .dot{
+    flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--bg-soft);
+    color:var(--blue);font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;
+    border:1.5px solid var(--blue);
+  }
+  .li .li-body{font-size:14px;line-height:1.55;color:var(--ink);}
+  .li .li-body b{color:var(--navy);font-weight:800;}
+  .li .li-body .tag{color:var(--blue);font-weight:700;}
+  /* KB layers */
+  .layer{
+    display:flex;gap:0;background:#fff;border:1px solid var(--line);border-radius:5px;
+    overflow:hidden;margin-bottom:8px;
+  }
+  .layer .lnum{
+    flex:0 0 52px;background:var(--blue-deep);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:20px;font-weight:800;
+  }
+  .layer .lbody{padding:10px 16px;}
+  .layer h4{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:2px;}
+  .layer p{font-size:13.5px;color:var(--gray);line-height:1.55;}
+  .layer p b{color:var(--ink);}
+  /* rule cards for system prompt */
+  .rule{
+    background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:0 5px 5px 0;padding:11px 16px;
+  }
+  .rule .rt{font-size:14.5px;font-weight:800;color:var(--navy);margin-bottom:2px;}
+  .rule .rt .n{color:var(--blue);margin-right:8px;}
+  .rule p{font-size:13.5px;color:var(--gray);line-height:1.55;}
+  .rule p b{color:var(--ink);font-weight:700;}
+  /* result / achievements */
+  .win{background:#fff;border:1px solid var(--line);border-radius:5px;padding:13px 16px;border-top:3px solid var(--teal);}
+  .win h4{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:4px;}
+  .win h4 .chk{color:var(--teal);margin-right:6px;font-weight:900;}
+  .win p{font-size:13.5px;color:var(--gray);line-height:1.6;}
+  .win p b{color:var(--ink);font-weight:700;}
+  /* roadmap */
+  .road{background:var(--bg-navy-soft);border-radius:5px;padding:16px 20px;color:#fff;}
+  .road>h4{font-size:17px;font-weight:800;color:#fff;margin-bottom:4px;}
+  .road>h4 .arrow{color:var(--teal);margin-right:8px;}
+  .road>p{color:#C6D2DC;font-size:14px;line-height:1.6;margin-bottom:12px;}
+  .road>p b{color:#fff;font-weight:700;}
+  .road .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .road .step{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:5px;padding:12px 14px;}
+  .road .step .sn{font-size:11.5px;font-weight:800;letter-spacing:1px;color:var(--teal);margin-bottom:5px;}
+  .road .step p{font-size:13px;color:#D6E0E8;line-height:1.55;}
+  .road .step p b{color:#fff;font-weight:700;}
+  /* footer */
+  .foot{background:var(--navy);color:#8FA0AD;padding:16px 5vw;font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  .foot b{color:#D6DEE5;font-weight:600;}
+  /* responsive */
+  @media(max-width:900px){
+    .grid-3,.grid-4,.grid-2,.road .steps{grid-template-columns:1fr;}
+    .hero h1{font-size:30px;}
+    .section{padding:40px 5vw;}
+    .hero{padding:48px 5vw 40px;}
+    .sec-title{font-size:22px;}
+    table{font-size:13px;}
+    thead th,tbody td{padding:11px 12px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="kicker">运营团队 · 效能提升项目</div>
+    <h1>业务团队信息检索 Agent<br><span class="hl">切实助力工作提效</span></h1>
+    <p class="lead">
+      为运营团队打造一个 <span class="accent">"问对人、找对文档"</span> 的智能入口，
+      把跨部门 / 跨代理商 / 跨文档的信息检索，从 <b>"靠人问、凭记忆"</b>
+      变成 <b>"问 Agent、有出处"</b>。
+    </p>
+  </header>
+
+  <!-- 一、项目背景 -->
+  <section class="section">
+    <div class="sec-head">
+      <div class="sec-num">一</div>
+      <div>
+        <div class="sec-title">项目背景</div>
+        <div class="sec-sub">信息分散、协作摩擦大，隐性时间成本高</div>
+      </div>
+    </div>
+    <p class="body">
+      运营团队在日常工作中需高频对接 <b class="key">财务、产品、法务、设计、数据分析</b> 等多个职能部门，
+      同时还要协调外部代理商，处理数量庞大的合同与业务文档。信息分散在不同系统、不同人手里，带来三类典型痛点：
+    </p>
+    <div class="grid grid-3" style="margin-top:2px;">
+      <div class="card">
+        <div class="c-tag">痛点 01</div>
+        <h4>"该找谁"不清晰</h4>
+        <p>一个具体问题（如某类<b>退款审批</b>、某活动的<b>数据口径</b>、某<b>合同条款</b>解释）到底归属哪个部门、对接人是谁，<b>新人和老人都常常需要反复打听</b>。</p>
+      </div>
+      <div class="card">
+        <div class="c-tag">痛点 02</div>
+        <h4>"看哪个文档"不确定</h4>
+        <p>制度、SOP、模板、合同散落在多个位置，<b>版本多、更新不同步</b>，容易看到过期或错误的版本。</p>
+      </div>
+      <div class="card">
+        <div class="c-tag">痛点 03</div>
+        <h4>咨询与查询成本高</h4>
+        <p>大量时间消耗在<b>"找人 — 等回复 — 再推进"</b>的链路上，跨部门等待成本尤其高，重复问题反复被咨询也拉低了<b>被咨询方</b>的效率。</p>
+      </div>
+    </div>
+    <div class="essence">
+      <span class="lbl">本质问题</span>
+      <p>团队缺少一个 <b>统一、可信、随时可用</b> 的信息检索入口，导致<b>隐性时间成本高、协作摩擦大、知识沉淀依赖个人</b>。</p>
+    </div>
+  </section>
+  <!-- 二、项目目标 -->
+  <section class="section">
+    <div class="sec-head">
+      <div class="sec-num">二</div>
+      <div>
+        <div class="sec-title">项目目标</div>
+        <div class="sec-sub">优先问 Agent，拿到有出处的答案</div>
+      </div>
+    </div>
+    <div class="lead-line">
+      <b>总目标：</b>搭建业务信息检索 Agent，让运营同学遇到问题时<span class="accent">优先问 Agent</span>，
+      实现 <b>"问对人、找对文档、拿到有出处的答案"</b>，降低跨部门咨询成本，沉淀团队知识资产。
+    </div>
+    <p class="body" style="margin-bottom:8px;">总目标拆解为四个<b class="key">可衡量</b>的子目标：</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:22%;">子目标</th>
+            <th style="width:34%;">衡量方式</th>
+            <th style="width:22%;">目标水平</th>
+            <th>说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="goal"><span class="idx">01</span>问对人</td>
+            <td>高频问题的<b>归属 / 对接人</b>命中率</td>
+            <td><span class="metric">&nbsp;100%</span></td>
+            <td>常见问题能直接给出归属部门与对接人，无需再人工打听</td>
+          </tr>
+          <tr>
+            <td class="goal"><span class="idx">02</span>找对文档</td>
+            <td>返回<b>最新版本</b>文档的准确率</td>
+            <td><span class="metric">&nbsp;100%</span></td>
+            <td>制度 / SOP / 模板 / 合同定位到正确位置与现行版本</td>
+          </tr>
+          <tr>
+            <td class="goal"><span class="idx">03</span>有出处</td>
+            <td>答案<b>附带来源</b>的比例</td>
+            <td><span class="metric">&nbsp;100%</span></td>
+            <td>每条业务答案均注明文档 / 位置或对接部门 / 对接人</td>
+          </tr>
+          <tr>
+            <td class="goal"><span class="idx">04</span>降成本</td>
+            <td>高频问题的<b>咨询等待时间</b></td>
+            <td><font color="#2251ff"><b>&lt;=1min</b></font></td>
+            <td>常见问题即问即答，减少"找人—等回复"的链路消耗</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="body" style="margin-top:12px;">
+      <b class="key">覆盖度方面</b>，需优先命中运营高频问题，例如：
+    </p>
+    <div class="block">
+      <div class="li"><span class="dot">Q</span><span class="li-body">某家代理商签的<b>主合同编号</b>是多少？对应的<span class="tag">补充协议编号</span>是？</span></div>
+      <div class="li"><span class="dot">Q</span><span class="li-body">结算单的<b>财务问题联系谁</b>？对接的<span class="tag">法务老师</span>是哪位？</span></div>
+      <div class="li"><span class="dot">Q</span><span class="li-body">某项<b>制度 / SOP / 模板 / 口径说明</b>，<span class="tag">最新版本</span>在哪里？</span></div>
+    </div>
+  </section>
+  <!-- 三、项目行动 -->
+  <section class="section">
+    <div class="sec-head">
+      <div class="sec-num">三</div>
+      <div>
+        <div class="sec-title">项目行动</div>
+        <div class="sec-sub">建知识库 · 强化规则 · 试用迭代</div>
+      </div>
+    </div>
+
+    <h3 style="font-size:16.5px;font-weight:800;color:var(--blue-deep);margin:2px 0 8px;">3.1　建立运营团队业务知识库</h3>
+    <p class="body">
+      按 <b class="key">"运营同学实际会问什么"</b> 的视角组织内容，而非按部门堆文档。建议知识库分为<b class="key">四层</b>：
+    </p>
+    <div class="layer">
+      <div class="lnum">1</div>
+      <div class="lbody"><h4>问题 — 归属映射</h4><p>常见问题 → <b>归属部门</b> → 对接人 → 备用对接人 → <b>响应时效 / 对接方式</b>。</p></div>
+    </div>
+    <div class="layer">
+      <div class="lnum">2</div>
+      <div class="lbody"><h4>文档索引</h4><p>制度 / SOP / 模板 / 口径说明，标注<b>文档名、位置 / 链接、适用场景、版本与更新日期、维护人</b>。</p></div>
+    </div>
+    <div class="layer">
+      <div class="lnum">3</div>
+      <div class="lbody"><h4>合同与代理商专区</h4><p>各代理商<b>对接人、合作范围、关键合同条款要点与常见问答、合同存放位置</b>。</p></div>
+    </div>
+    <div class="layer">
+      <div class="lnum">4</div>
+      <div class="lbody"><h4>口径与术语库</h4><p><b>数据指标口径、业务术语、审批流程</b>等易产生歧义的定义。</p></div>
+    </div>
+    <div class="essence" style="margin-top:10px;">
+      <span class="lbl">关键设计</span>
+      <p>知识库以<b>文件形式沉淀</b>，放置在 Agent 的<b>工作目录</b>下，确保 Agent 每次都能读取到<b>最新版本</b>。</p>
+    </div>
+
+    <h3 style="font-size:16.5px;font-weight:800;color:var(--blue-deep);margin:18px 0 8px;">3.2　在 System Prompt 中强化"先检索后回答"规则</h3>
+    <p class="body">Agent 的核心约束写入 system prompt，关键规则包括：</p>
+    <div class="grid grid-2" style="margin-top:2px;">
+      <div class="rule"><div class="rt"><span class="n">01</span>强制检索</div><p>回答任何业务问题前，<b>必须先检索工作目录下的知识库</b>，不得凭记忆或臆测作答。</p></div>
+      <div class="rule"><div class="rt"><span class="n">02</span>必带出处</div><p>答案需注明来源（<b>文档名 + 位置 / 链接</b>，或<b>对接部门 + 对接人</b>）。</p></div>
+      <div class="rule"><div class="rt"><span class="n">03</span>诚实兜底</div><p>查不到时明确告知<b>"未收录"</b>，并给出最可能的归属方向或建议的下一步，<b>而非编造</b>。</p></div>
+      <div class="rule"><div class="rt"><span class="n">04</span>区分事实与建议</div><p>涉及<b>法务 / 财务</b>的正式结论，引导用户以<b>官方文档或对接人确认</b>为准。</p></div>
+    </div>
+
+    <h3 style="font-size:16.5px;font-weight:800;color:var(--blue-deep);margin:18px 0 8px;">3.3　试用与迭代</h3>
+    <div class="lead-line" style="margin-bottom:0;">
+      Agent 已完成搭建并<b>投入试用</b>。试用阶段的重点是验证<span class="accent">检索命中率、答案准确性与实际提效效果</span>，并据此<b>补全知识库盲区</b>。
+    </div>
+  </section>
+  <!-- 四、项目复盘 -->
+  <section class="section">
+    <div class="sec-head">
+      <div class="sec-num">四</div>
+      <div>
+        <div class="sec-title">项目复盘</div>
+        <div class="sec-sub">项目成果</div>
+      </div>
+    </div>
+    <div class="grid grid-3">
+      <div class="win">
+        <h4><span class="chk">✓</span>"先检索后回答"规则有效</h4>
+        <p><b>强制检索 + 必带出处</b>，显著降低了 Agent 编造答案的情况，答案<b>可追溯</b>，用户更敢用、更信任。</p>
+      </div>
+      <div class="win">
+        <h4><span class="chk">✓</span>以"业务实际问题"建库</h4>
+        <p>贴合运营同学<b>真实提问习惯</b>，检索命中更自然。</p>
+      </div>
+      <div class="win">
+        <h4><span class="chk">✓</span>放工作目录、随取随读</h4>
+        <p>更新后 Agent <b>立即生效</b>，避免了"模型记忆过期"的问题。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 五、后续规划 -->
+  <section class="section">
+    <div class="sec-head">
+      <div class="sec-num">五</div>
+      <div>
+        <div class="sec-title">后续规划</div>
+        <div class="sec-sub">部署到企业微信机器人，从"个人使用"升级为"团队随手可用"</div>
+      </div>
+    </div>
+    <div class="road">
+      <h4><span class="arrow">▶</span>部署到企业微信机器人</h4>
+      <p>将 Agent 接入企微机器人，让能力从 <b>"个人使用"</b> 升级为 <b>"团队随手可用"</b>。具体落地：</p>
+      <div class="steps">
+        <div class="step">
+          <div class="sn">STEP 01 · 建群入群</div>
+          <p>新建运营团队<b>专属企微群</b>，把机器人拉进群，成员 <b>@机器人</b> 即可提问，答案群内可见，形成<b>公开的问答沉淀</b>。</p>
+        </div>
+        <div class="step">
+          <div class="sn">STEP 02 · 复用规则</div>
+          <p>机器人复用<b>同一套知识库与 system prompt 规则</b>（先检索、带出处、诚实兜底），保证群内答案与个人使用<b>一致</b>。</p>
+        </div>
+        <div class="step">
+          <div class="sn">STEP 03 · 明确边界</div>
+          <p>明确使用方式与边界：涉及<b>法务 / 财务</b>的正式结论，仍引导以<b>官方文档或对接人确认</b>为准。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div>业务团队信息检索 Agent · <b>切实助力工作提效</b></div>
+    <div>问对人 · 找对文档 · 有出处</div>
+  </footer>
+
+</div>
+
+
+
+
+<!-- INJECTED_HOME_BTN -->
+<style>
+#__homeBtn{
+  position:fixed; bottom:26px; right:26px; z-index:2147483647;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:11px 20px; font-size:15px; font-weight:700;
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  color:#fff; text-decoration:none; cursor:pointer;
+  border:none; border-radius:999px;
+  background:linear-gradient(135deg,#2f6bff,#12b981);
+  box-shadow:0 8px 24px rgba(47,107,255,.4),inset 0 1px 0 rgba(255,255,255,.5);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+#__homeBtn:hover{ transform:translateY(-2px) scale(1.04);
+  box-shadow:0 12px 30px rgba(47,107,255,.5); }
+#__homeBtn svg{ width:16px; height:16px; }
+@media print{ #__homeBtn{ display:none; } }
+</style>
+<a id="__homeBtn" href="index.html" title="返回主页">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+       stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>
+  </svg>
+  返回主页
+</a>
+
+</body></html>

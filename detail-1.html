@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<!-- saved from url=(0341)file:///Users/ksc/Library/Application%20Support/Claude-3p/local-agent-mode-sessions/0cc53139-9eda-4c0c-8ffb-9ad180fea643/00000000-0000-4000-8000-000000000001/local_84141a4f-8f57-4372-82c6-bd819bdc12bd/outputs/%E4%BA%BA%E7%BE%A4%E8%B4%A8%E9%87%8F%E7%B2%BE%E5%87%86%E8%AF%84%E4%BB%B7%E4%BD%93%E7%B3%BB-%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=1200, viewport-fit=cover">
+<title>多维交叉人群质量精准评价体系 · 项目复盘</title>
+<style>
+/* ===================== 设计变量 ===================== */
+:root{
+  --bg:#f4f6fb;            /* 米白偏冷的浅背景 */
+  --bg2:#eaf0fa;
+  --ink:#0f1b34;          /* 主文字 深靛 */
+  --ink-soft:#4a5875;     /* 次级文字 */
+  --ink-mute:#8994a8;     /* 弱文字 */
+  --line:rgba(15,27,52,.08);
+  --accent:#3355ff;       /* 科技蓝 主点缀 */
+  --accent-2:#12b3a6;     /* 青绿 副点缀 */
+  --warm:#ff7a3c;         /* 品牌橙 高亮 */
+  --hi:#1f9d63;           /* 高ROI 绿 */
+  --mid:#e0a020;          /* 中ROI 琥珀 */
+  --lo:#e2564d;           /* 低ROI 红 */
+  --glass:rgba(255,255,255,.62);
+  --glass-strong:rgba(255,255,255,.82);
+  --radius:20px;
+  --shadow-s:0 2px 10px rgba(15,27,52,.05);
+  --shadow-m:0 10px 30px rgba(15,27,52,.09);
+  --shadow-l:0 24px 60px rgba(15,27,52,.14);
+  color-scheme: light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  color:var(--ink);
+  line-height:1.65;
+  background:var(--bg);
+  /* 柔和光晕背景 */
+  background-image:
+    radial-gradient(60vw 60vw at 8% -6%, rgba(51,85,255,.10), transparent 60%),
+    radial-gradient(46vw 46vw at 100% 4%, rgba(18,179,166,.10), transparent 60%),
+    radial-gradient(50vw 50vw at 50% 118%, rgba(255,122,60,.08), transparent 60%);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1280px;margin:0 auto;padding:0 14px}
+
+/* ===================== 通用玻璃卡片 ===================== */
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(18px) saturate(150%);
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+  border:1px solid rgba(255,255,255,.7);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-m), inset 0 1px 0 rgba(255,255,255,.6);
+}
+.card-hover{transition:transform .5s cubic-bezier(.2,.9,.25,1), box-shadow .5s cubic-bezier(.2,.9,.25,1)}
+.card-hover:hover{transform:translateY(-8px);box-shadow:var(--shadow-l), inset 0 1px 0 rgba(255,255,255,.7)}
+
+/* ===================== 章节通用 ===================== */
+section{padding:44px 0}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);padding:6px 14px;border-radius:999px;
+  background:rgba(51,85,255,.08);border:1px solid rgba(51,85,255,.15);
+}
+.sec-title{font-size:30px;font-weight:800;letter-spacing:-.02em;margin:16px 0 10px;line-height:1.25}
+.sec-sub{color:var(--ink-soft);font-size:16px;max-width:760px}
+h3{font-size:19px;font-weight:750;letter-spacing:-.01em}
+
+/* 渐入动画 */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s cubic-bezier(.2,.9,.25,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* 交错延迟 */
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+.d4{transition-delay:.32s}.d5{transition-delay:.40s}.d6{transition-delay:.48s}
+
+/* ===================== HERO ===================== */
+.hero{padding:52px 0 32px;text-align:center}
+.hero h1{font-size:clamp(32px,5.2vw,56px);font-weight:850;letter-spacing:-.03em;line-height:1.1;
+  background:linear-gradient(120deg,#0f1b34 20%,var(--accent) 60%,var(--accent-2) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .lede{max-width:720px;margin:20px auto 0;font-size:17px;color:var(--ink-soft)}
+.badge-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.tag{font-size:12.5px;color:var(--ink-soft);padding:6px 13px;border-radius:999px;
+  background:var(--glass-strong);border:1px solid var(--line);box-shadow:var(--shadow-s)}
+
+/* 高光指标 */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.kpi{padding:26px 22px;text-align:left}
+.kpi .num{font-size:clamp(30px,3.6vw,42px);font-weight:850;letter-spacing:-.02em;line-height:1;
+  display:flex;align-items:baseline;gap:4px}
+.kpi .num .u{font-size:17px;font-weight:750;color:var(--ink-soft)}
+.kpi .lab{margin-top:10px;font-size:13.5px;color:var(--ink-soft);line-height:1.5}
+.kpi.k1 .num{color:var(--accent)} .kpi.k2 .num{color:var(--accent-2)}
+.kpi.k3 .num{color:var(--warm)} .kpi.k4 .num{color:var(--hi)}
+
+/* ===================== 对照测试 ===================== */
+.tests{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.test{padding:24px}
+.test .no{font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--warm)}
+.test h3{margin:8px 0 12px}
+.test .metric{display:flex;align-items:baseline;gap:8px;margin:6px 0}
+.test .metric b{font-size:26px;font-weight:850;color:var(--lo)}
+.test .metric span{font-size:13px;color:var(--ink-mute)}
+.test p{font-size:13.5px;color:var(--ink-soft);margin-top:10px}
+.insight{margin-top:20px;padding:22px 24px;border-left:4px solid var(--warm);
+  background:linear-gradient(90deg,rgba(255,122,60,.09),rgba(255,122,60,0));border-radius:12px}
+.insight .l{font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--warm);text-transform:uppercase}
+.insight p{margin-top:6px;font-size:15px;color:var(--ink)}
+
+/* ===================== 方法 矩阵 ===================== */
+.dims{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 22px}
+.dim{padding:22px}
+.dim .h{display:flex;align-items:center;gap:10px;font-weight:750;font-size:15px}
+.dim .dot{width:10px;height:10px;border-radius:50%}
+.dim ul{list-style:none;margin-top:12px}
+.dim li{font-size:13.5px;color:var(--ink-soft);padding:5px 0;border-bottom:1px dashed var(--line)}
+.dim li:last-child{border:none}
+.excluded{font-size:13px;color:var(--ink-mute);margin-top:8px}
+.excluded b{color:var(--ink-soft)}
+
+/* 12单元热力矩阵 */
+.matrix-wrap{margin-top:8px;overflow-x:auto}
+.matrix{display:grid;grid-template-columns:120px repeat(3,1fr);gap:10px;min-width:560px}
+.mx-head{font-size:12.5px;font-weight:800;color:var(--ink-soft);text-align:center;
+  align-self:center;letter-spacing:.04em}
+.mx-row-lab{font-size:12.5px;font-weight:750;color:var(--ink-soft);align-self:center;line-height:1.3}
+.cell{padding:14px 12px;border-radius:14px;color:#fff;position:relative;overflow:hidden;
+  transition:transform .4s cubic-bezier(.2,.9,.25,1), box-shadow .4s ease;cursor:default}
+.cell:hover{transform:scale(1.04);box-shadow:var(--shadow-m);z-index:2}
+.cell .n{font-size:12px;font-weight:700;opacity:.92}
+.cell .roi{font-size:22px;font-weight:850;margin-top:2px;line-height:1}
+.cell .cpa{font-size:11px;opacity:.85;margin-top:3px}
+.cell.hi{background:linear-gradient(135deg,#20a566,#0f8a52)}
+.cell.mid{background:linear-gradient(135deg,#e9b23f,#d1901a)}
+.cell.lo{background:linear-gradient(135deg,#e86a60,#cf463d)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;font-size:13px;color:var(--ink-soft)}
+.legend .li{display:flex;align-items:center;gap:7px}
+.legend .sw{width:14px;height:14px;border-radius:4px}
+
+/* 图表通用 */
+.chart-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;margin-top:18px}
+.panel{padding:26px}
+.panel .pt{font-weight:750;font-size:16px}
+.panel .ps{font-size:13px;color:var(--ink-mute);margin-top:2px;margin-bottom:18px}
+
+/* 柱状图 (CSS) */
+.bars{display:flex;flex-direction:column;gap:16px}
+.bar-row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:12px}
+.bar-row .bl{font-size:13px;color:var(--ink-soft);font-weight:600}
+.track{position:relative;height:30px;background:rgba(15,27,52,.05);border-radius:9px;overflow:hidden}
+.fill{height:100%;border-radius:9px;width:0;transition:width 1.1s cubic-bezier(.2,.9,.25,1);
+  display:flex;align-items:center;justify-content:flex-end;padding-right:10px;
+  color:#fff;font-size:12.5px;font-weight:750}
+.fill.byte{background:linear-gradient(90deg,#5a7bff,#3355ff)}
+.fill.tx{background:linear-gradient(90deg,#25c9bb,#12b3a6)}
+.gl{display:flex;gap:18px;margin-bottom:16px;font-size:12.5px;color:var(--ink-soft)}
+.gl .gi{display:flex;align-items:center;gap:6px}
+.gl .gs{width:12px;height:12px;border-radius:3px}
+
+/* 环形图 */
+.donut-wrap{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.donut{flex:0 0 auto}
+.dleg{flex:1;min-width:170px;display:flex;flex-direction:column;gap:12px}
+.dleg .di{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--ink-soft)}
+.dleg .di .sw{width:12px;height:12px;border-radius:4px;flex:0 0 auto}
+.dleg .di b{color:var(--ink);font-weight:750}
+.dleg .di .p{margin-left:auto;font-weight:800;color:var(--ink)}
+
+/* 核心结论 */
+.finds{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.find{padding:24px;display:flex;gap:16px;align-items:flex-start}
+.find .ic{flex:0 0 auto;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  font-size:20px;font-weight:850;color:#fff}
+.find.f1 .ic{background:linear-gradient(135deg,#5a7bff,#3355ff)}
+.find.f2 .ic{background:linear-gradient(135deg,#25c9bb,#0f8a76)}
+.find h3{font-size:15.5px;margin-bottom:5px}
+.find p{font-size:13.5px;color:var(--ink-soft)}
+
+/* 策略 */
+.strat{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+.step{padding:26px 28px;display:grid;grid-template-columns:56px 1fr;gap:20px;align-items:start;position:relative}
+.step .idx{font-size:30px;font-weight:850;line-height:1;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.step .st-h{font-size:17px;font-weight:780;margin-bottom:8px}
+.step .st-b{font-size:14.5px;color:var(--ink-soft)}
+.step .chip{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);
+  background:rgba(51,85,255,.09);border:1px solid rgba(51,85,255,.16);
+  padding:3px 10px;border-radius:8px;margin:10px 8px 0 0}
+.step .chip.g{color:var(--hi);background:rgba(31,157,99,.10);border-color:rgba(31,157,99,.18)}
+.step .chip.o{color:var(--warm);background:rgba(255,122,60,.10);border-color:rgba(255,122,60,.2)}
+
+/* 页脚 */
+footer{padding:44px 0 60px;text-align:center}
+.footnote{font-size:12.5px;color:var(--ink-mute);margin-top:6px}
+.footline{font-size:13px;color:var(--ink-soft);font-weight:600}
+
+/* 响应式 */
+@media(max-width:880px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .tests,.dims,.finds{grid-template-columns:1fr}
+  .chart-grid{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .kpis{grid-template-columns:1fr}
+  section{padding:48px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal{transition:none;opacity:1;transform:none}
+  *{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<!-- ============ HERO ============ -->
+<header class="hero wrap">
+  <div class="reveal in"><span class="eyebrow">◆ 增长分析 · 用数据驱动健康增长</span></div>
+  <h1 class="reveal in d1">多维交叉人群质量<br>精准评价体系</h1>
+  <p class="lede reveal in d2">
+    打破单一维度评价误区,将获客人群拆解至 <b>12 个最小单元</b>,
+    实现流量质量、成本、转化、ROI 的精准复盘与调优——让每一分预算都投向真正高价值的人群。
+  </p><p class="lede reveal in d2">数据仅供展示，不针对任何业务</p>
+  <div class="badge-row reveal in d3">
+    <span class="tag">🎯 城市 × 渠道 × 年级 三维交叉</span>
+    <span class="tag">📊 10,000+ 条历史数据</span>
+    <span class="tag">⚙️ 数据驱动的预算与素材策略</span>
+  </div>
+  <!-- 高光指标 -->
+  <div class="kpis">
+    <div class="kpi k1 glass card-hover reveal d2 in">
+      <div class="num">5<span class="u">类</span></div>
+      <div class="lab">识别出高 ROI 核心人群单元<br>(ROI &gt; 1.2)</div>
+    </div>
+    <div class="kpi k2 glass card-hover reveal d3 in">
+      <div class="num">+34<span class="u">%</span></div>
+      <div class="lab">ROI提升度<br>(优化前后综合 ROI 对比)</div>
+    </div>
+    <div class="kpi k3 glass card-hover reveal d4 in">
+      <div class="num">F<span class="u">年级</span></div>
+      <div class="lab">锁定 3-4 年级核心转化群体<br>转化显著优于 J / S 年级</div>
+    </div>
+    <div class="kpi k4 glass card-hover reveal d5 in">
+      <div class="num">+3<span class="u">%</span></div>
+      <div class="lab">高 ROI 人群占比明显增大<br>获客成本结构无明显提升</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PART 1 · 发现问题 ============ -->
+<section id="problem" class="wrap">
+  <div class="reveal in"><span class="eyebrow">Part 01 · 项目背景</span></div>
+  <h2 class="sec-title reveal d1 in">单一维度评价的陷阱</h2>
+  <p class="sec-sub reveal d2 in">获客团队习惯用"重点城市占比"or“女性用户占比高”等单一表面指标判断流量质量。
+    我设计了三组对照测试,验证这种惯性判断到底靠不靠谱——结果都不理想。
+  </p>
+
+  <div class="tests">
+    <div class="test glass card-hover reveal d1 in">
+      <div class="no">测试 1 · 只投一二线城市</div>
+      <h3>看似优质,成本却飙升</h3>
+      <div class="metric"><b>1.3×</b><span>CPA / 大盘平均</span></div>
+      <div class="metric"><b>0.94</b><span>ROI(未达标)</span></div>
+      <p>集中投一二线,竞争激烈、单价高,CPA 达到平均的 1.3 倍,ROI 反而跑输大盘。</p>
+    </div>
+    <div class="test glass card-hover reveal d2 in">
+      <div class="no">测试 2 · 30-55 岁 &amp; 仅女性</div>
+      <h3>转化不稳,流量悄悄偏移</h3>
+      <div class="metric"><b>0.88</b><span>ROI(低于大盘)</span></div>
+      <div class="metric"><b>3-5线</b><span>流量意外下沉</span></div>
+      <p>锁定人口属性后转化波动大,系统把流量推向 3-5 线,整体质量低于大盘预期。</p>
+    </div>
+    <div class="test glass card-hover reveal d3 in">
+      <div class="no">测试 3 · 一二线 + 女性 双限</div>
+      <h3>限制太死,系统无法起量</h3>
+      <div class="metric"><b>—</b><span>跑量失败</span></div>
+      <div class="metric"><b>&lt;20%</b><span>预算消耗率</span></div>
+      <p>叠加两重强限制后,人群池过窄,投放系统无法起量,预算大量闲置无法花出。</p>
+    </div>
+  </div>
+
+  <div class="insight glass reveal d2 in">
+    <div class="l">💡 我的洞察</div>
+    <p>
+      "重点城市占比高" 这类表面指标,会制造 "流量质量好" 的<b>惯性误判</b>——
+      它掩盖了年级结构失衡等真正的危机,让预算持续浪费在低 ROI 的城市/渠道/年级组合上。
+      要评价人群质量,必须<b>多维交叉</b>,而不是盯着任何一个孤立指标。
+    </p>
+  </div>
+</section>
+
+<!-- ============ PART 2 · 方法 ============ -->
+<section id="method" class="wrap">
+  <div class="reveal in"><span class="eyebrow">Part 02 · 项目行动</span></div>
+  <h2 class="sec-title reveal d1 in">构建 12 类精细化人群单元</h2>
+  <p class="sec-sub reveal d2 in">
+    我先用测试剔除了区分度低的维度:<b>性别、设备</b>对 ROI 影响不显著且限制起量,予以排除。
+    最终聚焦三个真正决定人群价值的维度——<b>城市 × 渠道 × 年级</b>,交叉出 2×2×3 = 12 个最小分析单元。
+  </p>
+
+  <div class="dims">
+    <div class="dim glass card-hover reveal d1 in">
+      <div class="h"><span class="dot" style="background:var(--accent)"></span>城市 · 2 档</div>
+      <ul>
+        <li>重点城市(一二线)</li>
+        <li>非重点城市(三四五线)</li>
+      </ul>
+      <div class="excluded">决定获客单价与竞争强度</div>
+    </div>
+    <div class="dim glass card-hover reveal d2 in">
+      <div class="h"><span class="dot" style="background:var(--accent-2)"></span>渠道 · 2 类</div>
+      <ul>
+        <li>字节系(巨量引擎)</li>
+        <li>腾讯系(广点通)</li>
+      </ul>
+      <div class="excluded">决定流量结构与人群覆盖</div>
+    </div>
+    <div class="dim glass card-hover reveal d3 in">
+      <div class="h"><span class="dot" style="background:var(--warm)"></span>年级 · 3 级</div>
+      <ul>
+        <li>J 级(1-2 年级)</li>
+        <li>F 级(3-4 年级)</li>
+        <li>S 级(5-6 年级)</li>
+      </ul>
+      <div class="excluded">决定报名意愿与转化深度</div>
+    </div>
+  </div>
+
+  <div class="excluded reveal d1 in" style="text-align:center;margin-bottom:22px">
+    ✕ 已剔除维度:<b>性别</b>(测试 2/3 显示限制转化与起量) ·
+    <b>设备</b>(区分度低,对 ROI 无显著影响)
+  </div>
+
+  <!-- 12 单元热力矩阵 -->
+  <div class="panel glass reveal d2 in">
+    <div class="pt">12 个最小人群单元 · ROI 热力矩阵</div>
+    <div class="ps">行 = 渠道 × 城市,列 = 年级;颜色越绿 ROI 越高,数字为 ROI / 单元 CPA(元)</div>
+    <div class="matrix-wrap">
+      <div class="matrix" id="matrix"><div class="mx-head"></div><div class="mx-head">J级 · 1-2年级</div><div class="mx-head">F级 · 3-4年级</div><div class="mx-head">S级 · 5-6年级</div><div class="mx-row-lab">字节 · 重点城市</div><div class="cell mid">
+        <div class="roi">1.08</div>
+        <div class="cpa">CPA ¥110</div>
+      </div><div class="cell hi">
+        <div class="roi">1.32</div>
+        <div class="cpa">CPA ¥84</div>
+      </div><div class="cell mid">
+        <div class="roi">1.05</div>
+        <div class="cpa">CPA ¥114</div>
+      </div><div class="mx-row-lab">字节 · 非重点城市</div><div class="cell lo">
+        <div class="roi">0.88</div>
+        <div class="cpa">CPA ¥134</div>
+      </div><div class="cell hi">
+        <div class="roi">1.24</div>
+        <div class="cpa">CPA ¥92</div>
+      </div><div class="cell lo">
+        <div class="roi">0.95</div>
+        <div class="cpa">CPA ¥126</div>
+      </div><div class="mx-row-lab">腾讯 · 重点城市</div><div class="cell mid">
+        <div class="roi">1.12</div>
+        <div class="cpa">CPA ¥104</div>
+      </div><div class="cell hi">
+        <div class="roi">1.38</div>
+        <div class="cpa">CPA ¥78</div>
+      </div><div class="cell hi">
+        <div class="roi">1.26</div>
+        <div class="cpa">CPA ¥90</div>
+      </div><div class="mx-row-lab">腾讯 · 非重点城市</div><div class="cell lo">
+        <div class="roi">0.96</div>
+        <div class="cpa">CPA ¥124</div>
+      </div><div class="cell hi">
+        <div class="roi">1.28</div>
+        <div class="cpa">CPA ¥88</div>
+      </div><div class="cell mid">
+        <div class="roi">1.10</div>
+        <div class="cpa">CPA ¥108</div>
+      </div></div>
+    </div>
+    <div class="legend">
+      <div class="li"><span class="sw" style="background:#149b5d"></span>高 ROI(&gt;1.2)</div>
+      <div class="li"><span class="sw" style="background:#d1901a"></span>中 ROI(1.0–1.2)</div>
+      <div class="li"><span class="sw" style="background:#cf463d"></span>低 ROI(&lt;1.0)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 3 · 我的发现 ============ -->
+<section id="finding" class="wrap">
+  <div class="reveal in"><span class="eyebrow">Part 03 · 我的发现</span></div>
+  <h2 class="sec-title reveal d1 in">基于 10,000+ 条数据的 ROI 分层</h2>
+  <p class="sec-sub reveal d2 in">
+    把 12 个单元按 ROI 三档排序后,规律清晰浮现:高 ROI 单元集中在 <b>F 年级</b>与<b>腾讯渠道</b>,
+    低 ROI 则集中在 <b>非重点城市 + J/S 年级</b>。两组对比图直接说明问题。
+  </p>
+
+  <div class="chart-grid">
+    <!-- 渠道 × 年级 分组柱图 -->
+    <div class="panel glass card-hover reveal d1 in">
+      <div class="pt">渠道 × 年级 · 平均 ROI 对比</div>
+      <div class="ps">同年级下腾讯普遍高于字节;F 年级两个渠道都表现突出</div>
+      <div class="gl">
+        <div class="gi"><span class="gs" style="background:#3355ff"></span>字节</div>
+        <div class="gi"><span class="gs" style="background:#12b3a6"></span>腾讯</div>
+      </div>
+      <div class="bars in" id="barChart">
+      <div>
+        <div class="bl" style="margin-bottom:8px">J级 · 1-2年级</div>
+        <div class="bar-row"><div class="bl">字节</div>
+          <div class="track"><div class="fill byte" data-w="65.3" style="width: 65.3%;">0.98</div></div></div>
+        <div class="bar-row" style="margin-top:8px"><div class="bl">腾讯</div>
+          <div class="track"><div class="fill tx" data-w="69.3" style="width: 69.3%;">1.04</div></div></div>
+      </div>
+      <div>
+        <div class="bl" style="margin-bottom:8px">F级 · 3-4年级</div>
+        <div class="bar-row"><div class="bl">字节</div>
+          <div class="track"><div class="fill byte" data-w="85.3" style="width: 85.3%;">1.28</div></div></div>
+        <div class="bar-row" style="margin-top:8px"><div class="bl">腾讯</div>
+          <div class="track"><div class="fill tx" data-w="88.7" style="width: 88.7%;">1.33</div></div></div>
+      </div>
+      <div>
+        <div class="bl" style="margin-bottom:8px">S级 · 5-6年级</div>
+        <div class="bar-row"><div class="bl">字节</div>
+          <div class="track"><div class="fill byte" data-w="66.7" style="width: 66.7%;">1.00</div></div></div>
+        <div class="bar-row" style="margin-top:8px"><div class="bl">腾讯</div>
+          <div class="track"><div class="fill tx" data-w="78.7" style="width: 78.7%;">1.18</div></div></div>
+      </div></div>
+    </div>
+
+    <!-- ROI 分层环形图 -->
+    <div class="panel glass card-hover reveal d2 in">
+      <div class="pt">12 单元 · ROI 三档分布</div>
+      <div class="ps">高 ROI 单元数量占比 42%,是预算重押的基本盘</div>
+      <div class="donut-wrap">
+        <svg class="donut in" id="donut" width="180" height="180" viewBox="0 0 180 180"><circle cx="90" cy="90" r="64" fill="none" stroke="rgba(15,27,52,.06)" stroke-width="22"></circle><circle cx="90" cy="90" r="64" fill="none" stroke="#149b5d" stroke-width="22" stroke-linecap="butt" transform="rotate(-90 90 90)" stroke-dasharray="168.8920210569873 402.1238596594935" stroke-dashoffset="0" style="transition: stroke-dasharray 1.1s cubic-bezier(0.2, 0.9, 0.25, 1);"></circle><circle cx="90" cy="90" r="64" fill="none" stroke="#d1901a" stroke-width="22" stroke-linecap="butt" transform="rotate(-90 90 90)" stroke-dasharray="132.70087368763288 402.1238596594935" stroke-dashoffset="-168.8920210569873" style="transition: stroke-dasharray 1.1s cubic-bezier(0.2, 0.9, 0.25, 1);"></circle><circle cx="90" cy="90" r="64" fill="none" stroke="#cf463d" stroke-width="22" stroke-linecap="butt" transform="rotate(-90 90 90)" stroke-dasharray="100.53096491487338 402.1238596594935" stroke-dashoffset="-301.59289474462014" style="transition: stroke-dasharray 1.1s cubic-bezier(0.2, 0.9, 0.25, 1);"></circle><text x="90" y="86" text-anchor="middle" font-size="13" fill="#8994a8">12 单元</text><text x="90" y="106" text-anchor="middle" font-size="20" font-weight="800" fill="#0f1b34">分布</text></svg>
+        <div class="dleg">
+          <div class="di"><span class="sw" style="background:#149b5d"></span><b>高 ROI</b> · 5 个单元<span class="p">42%</span></div>
+          <div class="di"><span class="sw" style="background:#d1901a"></span><b>中 ROI</b> · 4 个单元<span class="p">33%</span></div>
+          <div class="di"><span class="sw" style="background:#cf463d"></span><b>低 ROI</b> · 3 个单元<span class="p">25%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 两条核心结论 -->
+  <div class="finds">
+    <div class="find f1 glass card-hover reveal d1 in">
+      <div class="ic">1</div>
+      <div>
+        <h3>腾讯渠道覆盖更广,受城市等级影响更小</h3>
+        <p>腾讯在高 ROI 人群中出现频次更高,即便在非重点城市也能稳定跑出正向 ROI;
+        字节则更依赖重点城市的流量质量,城市下沉后衰减明显。</p>
+      </div>
+    </div>
+    <div class="find f2 glass card-hover reveal d2 in">
+      <div class="ic">2</div>
+      <div>
+        <h3>F 年级是核心高转化群体,S 年级依赖重点城市</h3>
+        <p>3-4 年级(F)转化显著优于 J / S,正处编程启蒙黄金期、付费意愿最强;
+        S 年级(5-6)则高度依赖重点城市,一旦下沉转化即快速走低。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 4 · 策略 ============ -->
+<section id="strategy" class="wrap">
+  <div class="reveal in"><span class="eyebrow">Part 04 · 我的策略</span></div>
+  <h2 class="sec-title reveal d1 in">从洞察到落地</h2>
+  <p class="sec-sub reveal d2 in">
+    评价体系只有落地才有价值。我把三档 ROI 结论转化成预算、素材、预警三套可执行机制,
+    推动团队从"惯性判断"彻底切换到"数据驱动"。
+  </p>
+
+  <div class="chart-grid">
+    <div class="strat">
+      <div class="step glass card-hover reveal d1 in">
+        <div class="idx">01</div>
+        <div>
+          <div class="st-h">预算分配 · 集中火力打高 ROI</div>
+          <div class="st-b">将 <b>80% 预算</b>优先分配给 5 个高 ROI 单元,重押字节 + 腾讯双渠道覆盖的 F 年级,
+          把资源从低效组合中抽出、投向确定性最高的人群。</div>
+          <span class="chip g">80% → 5 个高 ROI 单元</span>
+          <span class="chip">重押 F 年级双渠道</span>
+        </div>
+      </div>
+      <div class="step glass card-hover reveal d2 in">
+        <div class="idx">02</div>
+        <div>
+          <div class="st-h">素材 / 落地页 · 向 F 年级倾斜</div>
+          <div class="st-b">素材全面向 3-4 年级倾斜,强调"编程黄金启蒙期";当 S / J 年级出现失衡、
+          成本升高时,落地页<b>动态下架</b>对应招生信息,避免继续吸引低质流量。</div>
+          <span class="chip o">主打"黄金启蒙期"</span>
+          <span class="chip">落地页动态下架</span>
+        </div>
+      </div>
+      <div class="step glass card-hover reveal d3 in">
+        <div class="idx">03</div>
+        <div>
+          <div class="st-h">预警机制 · 从判断到监控</div>
+          <div class="st-b">监控 12 类人群的消耗占比,当低 ROI 人群消耗<b>超过 20%</b>时自动触发排查与控量,
+          让预算结构始终由数据实时校准。</div>
+          <span class="chip">低 ROI 消耗 &gt;20% 触发排查</span>
+          <span class="chip g">数据驱动闭环</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 预算环形图 -->
+    <div class="panel glass card-hover reveal d2 in">
+      <div class="pt">预算再分配 · 优化后结构</div>
+      <div class="ps">资源向高 ROI 单元集中,低 ROI 严格控量</div>
+      <div class="donut-wrap">
+        <svg class="donut in" id="budget" width="180" height="180" viewBox="0 0 180 180"><circle cx="90" cy="90" r="64" fill="none" stroke="rgba(15,27,52,.06)" stroke-width="22"></circle><circle cx="90" cy="90" r="64" fill="none" stroke="#149b5d" stroke-width="22" stroke-linecap="butt" transform="rotate(-90 90 90)" stroke-dasharray="321.6990877275948 402.1238596594935" stroke-dashoffset="0" style="transition: stroke-dasharray 1.1s cubic-bezier(0.2, 0.9, 0.25, 1);"></circle><circle cx="90" cy="90" r="64" fill="none" stroke="#d1901a" stroke-width="22" stroke-linecap="butt" transform="rotate(-90 90 90)" stroke-dasharray="60.31857894892402 402.1238596594935" stroke-dashoffset="-321.6990877275948" style="transition: stroke-dasharray 1.1s cubic-bezier(0.2, 0.9, 0.25, 1);"></circle><circle cx="90" cy="90" r="64" fill="none" stroke="#cf463d" stroke-width="22" stroke-linecap="butt" transform="rotate(-90 90 90)" stroke-dasharray="20.106192982974676 402.1238596594935" stroke-dashoffset="-382.01766667651884" style="transition: stroke-dasharray 1.1s cubic-bezier(0.2, 0.9, 0.25, 1);"></circle><text x="90" y="86" text-anchor="middle" font-size="13" fill="#8994a8">12 单元</text><text x="90" y="106" text-anchor="middle" font-size="20" font-weight="800" fill="#0f1b34">预算</text></svg>
+        <div class="dleg">
+          <div class="di"><span class="sw" style="background:#149b5d"></span><b>高 ROI 单元</b><span class="p">80%</span></div>
+          <div class="di"><span class="sw" style="background:#d1901a"></span><b>中 ROI 单元</b><span class="p">15%</span></div>
+          <div class="di"><span class="sw" style="background:#cf463d"></span><b>低 ROI(试探)</b><span class="p">5%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="wrap">
+  <div class="footline reveal in">多维交叉人群质量精准评价体系 · 项目复盘</div>
+  <div class="footnote reveal d1">分析框架:发现问题 → 多维拆解 → 数据分层 → 策略落地 · 城市 × 渠道 × 年级 三维交叉</div>
+  <div class="footnote reveal d2">* 本页数据为示意,已做脱敏处理,仅用于展示分析方法与思路。</div>
+</footer>
+
+<script>
+/* ========================================================
+   数据模型 —— 12 个最小人群单元 (示意 / 已脱敏)
+   ROI 与 CPA 自洽:ROI 越高,单元 CPA 越低
+   ======================================================== */
+const GRADES = [
+  {key:'J', label:'J级 · 1-2年级'},
+  {key:'F', label:'F级 · 3-4年级'},
+  {key:'S', label:'S级 · 5-6年级'}
+];
+// 行 = 渠道 × 城市;每行三个年级 [J,F,S] 的 {roi, cpa}
+const ROWS = [
+  {lab:'字节 · 重点城市', data:[{roi:1.08,cpa:110},{roi:1.32,cpa:84},{roi:1.05,cpa:114}]},
+  {lab:'字节 · 非重点城市', data:[{roi:0.88,cpa:134},{roi:1.24,cpa:92},{roi:0.95,cpa:126}]},
+  {lab:'腾讯 · 重点城市', data:[{roi:1.12,cpa:104},{roi:1.38,cpa:78},{roi:1.26,cpa:90}]},
+  {lab:'腾讯 · 非重点城市', data:[{roi:0.96,cpa:124},{roi:1.28,cpa:88},{roi:1.10,cpa:108}]}
+];
+const tier = roi => roi>1.2 ? 'hi' : (roi>=1.0 ? 'mid' : 'lo');
+
+/* ---------- 渲染 12 单元热力矩阵 ---------- */
+(function(){
+  const m = document.getElementById('matrix');
+  let html = '<div class="mx-head"></div>';
+  GRADES.forEach(g => html += `<div class="mx-head">${g.label}</div>`);
+  ROWS.forEach(r=>{
+    html += `<div class="mx-row-lab">${r.lab}</div>`;
+    r.data.forEach(c=>{
+      html += `<div class="cell ${tier(c.roi)}">
+        <div class="roi">${c.roi.toFixed(2)}</div>
+        <div class="cpa">CPA ¥${c.cpa}</div>
+      </div>`;
+    });
+  });
+  m.innerHTML = html;
+})();
+
+/* ---------- 渠道×年级 平均 ROI 柱状图 ---------- */
+(function(){
+  // 各年级下 字节/腾讯 平均 ROI
+  const avg = (rowIdxs, gi) => rowIdxs.reduce((s,i)=>s+ROWS[i].data[gi].roi,0)/rowIdxs.length;
+  const byteRows=[0,1], txRows=[2,3];
+  const MAX = 1.5;
+  let html='';
+  GRADES.forEach((g,gi)=>{
+    const b = avg(byteRows,gi), t = avg(txRows,gi);
+    html += `
+      <div>
+        <div class="bl" style="margin-bottom:8px">${g.label}</div>
+        <div class="bar-row"><div class="bl">字节</div>
+          <div class="track"><div class="fill byte" data-w="${(b/MAX*100).toFixed(1)}">${b.toFixed(2)}</div></div></div>
+        <div class="bar-row" style="margin-top:8px"><div class="bl">腾讯</div>
+          <div class="track"><div class="fill tx" data-w="${(t/MAX*100).toFixed(1)}">${t.toFixed(2)}</div></div></div>
+      </div>`;
+  });
+  document.getElementById('barChart').innerHTML = html;
+})();
+
+/* ---------- SVG 环形图通用函数 ---------- */
+function drawDonut(id, segments){
+  const svg = document.getElementById(id);
+  const cx=90, cy=90, r=64, sw=22, C=2*Math.PI*r;
+  let offset=0;
+  const NS='http://www.w3.org/2000/svg';
+  // 底环
+  const base=document.createElementNS(NS,'circle');
+  base.setAttribute('cx',cx);base.setAttribute('cy',cy);base.setAttribute('r',r);
+  base.setAttribute('fill','none');base.setAttribute('stroke','rgba(15,27,52,.06)');
+  base.setAttribute('stroke-width',sw);
+  svg.appendChild(base);
+  segments.forEach((s,i)=>{
+    const len = C*s.v/100;
+    const segOffset = offset;          // 关键:用局部常量固化本段起点,避免闭包读到累加后的终值
+    const c=document.createElementNS(NS,'circle');
+    c.setAttribute('cx',cx);c.setAttribute('cy',cy);c.setAttribute('r',r);
+    c.setAttribute('fill','none');c.setAttribute('stroke',s.color);
+    c.setAttribute('stroke-width',sw);c.setAttribute('stroke-linecap','butt'); // butt 防止相邻扇区圆头溢出遮挡
+    c.setAttribute('transform',`rotate(-90 ${cx} ${cy})`);
+    c.setAttribute('stroke-dasharray',`0 ${C}`);
+    // 起点位移(每段固定,不随动画改变)
+    c.setAttribute('stroke-dashoffset', -segOffset);
+    svg.appendChild(c);
+    // 动画:延迟后仅写入 dasharray 长度,保证每段完整绘制
+    setTimeout(()=>{
+      c.style.transition='stroke-dasharray 1.1s cubic-bezier(.2,.9,.25,1)';
+      c.setAttribute('stroke-dasharray',`${len} ${C}`);
+    }, 250+i*220);
+    offset += len;
+  });
+  // 中心文字
+  const t=document.createElementNS(NS,'text');
+  t.setAttribute('x',cx);t.setAttribute('y',cy-4);t.setAttribute('text-anchor','middle');
+  t.setAttribute('font-size','13');t.setAttribute('fill','#8994a8');t.textContent='12 单元';
+  const t2=document.createElementNS(NS,'text');
+  t2.setAttribute('x',cx);t2.setAttribute('y',cy+16);t2.setAttribute('text-anchor','middle');
+  t2.setAttribute('font-size','20');t2.setAttribute('font-weight','800');t2.setAttribute('fill','#0f1b34');
+  t2.textContent=svg.id==='budget'?'预算':'分布';
+  svg.appendChild(t);svg.appendChild(t2);
+}
+</script>
+
+<script>
+/* ========================================================
+   滚动渐入 + 图表进入视口时触发动画
+   ======================================================== */
+(function(){
+  let barsFired=false, donutFired=false, budgetFired=false;
+
+  const fillBars = ()=>{
+    if(barsFired) return; barsFired=true;
+    document.querySelectorAll('#barChart .fill').forEach(f=>{
+      f.style.width = f.dataset.w + '%';
+    });
+  };
+  const drawDist = ()=>{
+    if(donutFired) return; donutFired=true;
+    drawDonut('donut',[
+      {v:42,color:'#149b5d'},{v:33,color:'#d1901a'},{v:25,color:'#cf463d'}
+    ]);
+  };
+  const drawBud = ()=>{
+    if(budgetFired) return; budgetFired=true;
+    drawDonut('budget',[
+      {v:80,color:'#149b5d'},{v:15,color:'#d1901a'},{v:5,color:'#cf463d'}
+    ]);
+  };
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      e.target.classList.add('in');            // 通用渐入
+      if(e.target.id==='barChart') fillBars();
+      if(e.target.id==='donut') drawDist();
+      if(e.target.id==='budget') drawBud();
+    });
+  },{threshold:0.18, rootMargin:'0px 0px -8% 0px'});
+
+  document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+  ['barChart','donut','budget'].forEach(id=>{
+    const el=document.getElementById(id); if(el) io.observe(el);
+  });
+
+  // 兜底:若浏览器不支持 IO,直接显示
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+    fillBars();drawDist();drawBud();
+  }
+})();
+</script>
+
+
+
+
+<!-- INJECTED_HOME_BTN -->
+<style>
+#__homeBtn{
+  position:fixed; bottom:26px; right:26px; z-index:2147483647;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:11px 20px; font-size:15px; font-weight:700;
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  color:#fff; text-decoration:none; cursor:pointer;
+  border:none; border-radius:999px;
+  background:linear-gradient(135deg,#2f6bff,#12b981);
+  box-shadow:0 8px 24px rgba(47,107,255,.4),inset 0 1px 0 rgba(255,255,255,.5);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+#__homeBtn:hover{ transform:translateY(-2px) scale(1.04);
+  box-shadow:0 12px 30px rgba(47,107,255,.5); }
+#__homeBtn svg{ width:16px; height:16px; }
+@media print{ #__homeBtn{ display:none; } }
+</style>
+<a id="__homeBtn" href="index.html" title="返回主页">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+       stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>
+  </svg>
+  返回主页
+</a>
+
+</body></html>
